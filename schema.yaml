@@ -1,0 +1,27 @@
+COLUMNS:
+  id : int64
+  loc : float64
+  v(g) : float64
+  ev(g) : float64
+  iv(g) : float64
+  n : float64
+  v : float64
+  l : float64
+  d : float64
+  i : float64
+  e : float64
+  b : float64
+  t : float64
+  lOCode : int64
+  lOComment : int64
+  lOBlank : int64
+  locCodeAndComment : int64
+  uniq_Op : float64
+  uniq_Opnd : float64
+  total_Op : float64
+  total_Opnd : float64
+  branchCount : float64
+  defects : bool
+
+TARGET_COLUMN:
+  name: defects
