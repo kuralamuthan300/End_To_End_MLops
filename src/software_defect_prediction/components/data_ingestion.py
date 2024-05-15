@@ -1,3 +1,4 @@
+from software_defect_prediction.entity.config_entity import DataIngestionConfig
 import software_defect_prediction.utils
 import software_defect_prediction.config
 
