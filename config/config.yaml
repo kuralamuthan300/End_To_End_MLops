@@ -5,5 +5,6 @@ data_ingestion:
   root_dir: artifacts/data_ingestion
   source_URL: https://storage.googleapis.com/kaggle-competitions-data/kaggle-v2/60890/6622167/compressed/train.csv.zip?GoogleAccessId=web-data@kaggle-161607.iam.gserviceaccount.com&Expires=1715956192&Signature=S%2FBjYfchzSEpEgEstPoMpJWLdxO4HvD2o6ej3jMf399LAX1Y5bG4WdIjb5T8uxZR9t187J%2F5xXQu7ru1isCzpjnZxPuANt7rKlnDzQWOzEM2wJ245pwyx11ehY%2FYi%2BH8d03cudgMmvuzH%2FpbqkyFOmHTriRalu8SqlMAUVFE%2BidFXGJiH1SU9r%2BQ8MpXtBC4gbqF5JsxZ9%2FcgMkqnVvbzRvIBjfOlq4ele71W6zCxeDLTdq0MIWhGF3VP5eclqP1SKE2oLoau0BiDBhAzca%2BSw8rj%2F2MeFQQaG7z50VMt3YDs2gGJjfQnvCGB8BaIJtSe98b2PhuiJf21%2BffsBFHFw%3D%3D&response-content-disposition=attachment%3B+filename%3Dtrain.csv.zip
   source_URL_file_name : software_defect_detection.zip
-  local_data_file: train.csv
+  source_URL_unzip_file_name : train.csv
+  local_data_file: software_defect_detection.csv
   unzip_dir: artifacts/data_ingestion
