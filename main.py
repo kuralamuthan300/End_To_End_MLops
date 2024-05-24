@@ -1,0 +1,4 @@
+import software_defect_prediction.config
+from software_defect_prediction.components import data_ingestion
+
+

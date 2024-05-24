@@ -1,7 +1,5 @@
 from software_defect_prediction.entity.config_entity import DataIngestionConfig
-from software_defect_prediction.config.configuration import ConfigurationManager
-import software_defect_prediction.utils
-import software_defect_prediction.config
+from software_defect_prediction import logger
 
 import urllib.request
 from pathlib import Path
@@ -12,22 +10,21 @@ class data_ingestion():
     def __init__(self,data_ingestion_config : DataIngestionConfig) -> None:
         config = data_ingestion_config
     
-    def download_file(self):
-        url = self.source_URL
-        save_path = Path(self.root_dir,self.source_URL_file_name)
+    def download_file(self) -> None:
+        save_path = Path(config.root_dir,config.source_URL_file_name)
         try:
-        # Open a connection to the URL
-            with urllib.request.urlopen(url) as response:
-            # Read data from the response
+            # Open a connection to the URL
+            with urllib.request.urlopen(self.config.source_URL) as response:
+                # Read data from the response
                 data = response.read()
-            
-            # Write the data to a file at the specified save path
-            with open(save_path, 'wb') as file:
-                file.write(data)
                 
+                # Write the data to a file at the specified save path
+                with open(save_path, 'wb') as file:
+                    file.write(data)
+                    
             logger.info(f"File downloaded successfully to: {save_path}")
         except Exception as e:
-            logger.error(f"Failed to download file from {url}: {e}")
+            logger.error(f"Failed to download file from {self.config.source_URL}: {e}")
             
     def unzip_file(zip_file_path, extract_dir):
         try:
