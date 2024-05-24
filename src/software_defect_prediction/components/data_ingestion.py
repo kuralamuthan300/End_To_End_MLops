@@ -5,7 +5,7 @@ import urllib.request
 from pathlib import Path
 import zipfile
 
-
+ 
 class data_ingestion():
     def __init__(self,data_ingestion_config : DataIngestionConfig) -> None:
         config = data_ingestion_config
