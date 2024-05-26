@@ -8,3 +8,9 @@ data_ingestion:
   source_URL_unzip_file_name : train.csv
   local_data_file: software_defect_detection.csv
   unzip_dir: artifacts/data_ingestion
+
+data_validation:
+  root_dir: artifacts/data_validation
+  source_file_path: artifacts/data_ingestion/software_defect_detection.csv
+  input_file_name: software_defect_detection.csv
+  STATUS_FILE : artifacts/data_validation/status.txt
