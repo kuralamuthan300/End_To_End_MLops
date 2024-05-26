@@ -1,6 +1,8 @@
 from software_defect_prediction.constants import *
 from software_defect_prediction.utils.common import read_yaml, create_directories
-from software_defect_prediction.entity.config_entity import (DataIngestionConfig)
+from software_defect_prediction.entity.config_entity import (DataIngestionConfig, DataValidationConfig)
+
+from box import ConfigBox
 
 class ConfigurationManager:
     def __init__(
@@ -15,8 +17,9 @@ class ConfigurationManager:
 
         create_directories([self.config.artifacts_root])
 
+    def get_data_schema(self) -> ConfigBox:
+        return(self.schema)
 
-    
     def get_data_ingestion_config(self) -> DataIngestionConfig:
         config = self.config.data_ingestion
 
@@ -32,3 +35,15 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config = self.config.data_validation
+        
+        create_directories([config.root_dir])
+        data_validation_config = DataValidationConfig(
+            root_dir = config.root_dir,
+            input_file_name = config.input_file_name,
+            source_file_path = config.source_file_path,
+            STATUS_FILE = config.STATUS_FILE
+        )
+        return data_validation_config

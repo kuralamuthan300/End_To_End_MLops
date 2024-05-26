@@ -1,6 +1,10 @@
 from software_defect_prediction import logger
 from software_defect_prediction.pipeline.stage_01_dataingestion_pipeline import DataIngestionPipeline
+from software_defect_prediction.pipeline.stage_02_datavalidation_pipeline import DataValidationPipeline
 
 
 dataingestion_pipeline = DataIngestionPipeline()
 dataingestion_pipeline.main()
+
+datavalidation_pipeline = DataValidationPipeline()
+datavalidation_pipeline.main()

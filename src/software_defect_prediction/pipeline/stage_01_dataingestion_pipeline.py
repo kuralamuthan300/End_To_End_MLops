@@ -14,7 +14,7 @@ class DataIngestionPipeline:
             logger.info(">>>>>> Data ingestion run started <<<<<<")
             step_data_ing.download_file()
             step_data_ing.unzip_file()
-            logger.info(">>>>>> Data ingestion completed successfully <<<<<<")
+            logger.success(">>>>>> Data ingestion completed successfully <<<<<<")
         except Exception as e:
             logger.error(">>>>>> Data ingestion failed <<<<<<")
             logger.info(e)
