@@ -11,11 +11,12 @@ class DataIngestionPipeline:
             configuration_obj = ConfigurationManager()
             data_ingestion_conf =  configuration_obj.get_data_ingestion_config()
             step_data_ing = Data_Ingestion(data_ingestion_conf)
+            logger.info(">>>>>> Data ingestion run started <<<<<<")
             step_data_ing.download_file()
             step_data_ing.unzip_file()
-            logger.success("Data ingestion completed successfully")
+            logger.info(">>>>>> Data ingestion completed successfully <<<<<<")
         except Exception as e:
-            logger.error("Data ingestion failed")
+            logger.error(">>>>>> Data ingestion failed <<<<<<")
             logger.info(e)
         
         
