@@ -14,3 +14,8 @@ data_validation:
   source_file_path: artifacts/data_ingestion/software_defect_detection.csv
   input_file_name: software_defect_detection.csv
   STATUS_FILE : artifacts/data_validation/status.txt
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  source_file_path: artifacts/data_validation/software_defect_detection.csv
+  input_file_name: software_defect_detection.csv

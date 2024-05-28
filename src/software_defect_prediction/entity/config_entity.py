@@ -16,4 +16,10 @@ class DataValidationConfig:
     root_dir: Path
     source_file_path : str
     input_file_name : str
-    STATUS_FILE: Path 
+    STATUS_FILE: str 
+    
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    source_file_path : str
+    input_file_name : str

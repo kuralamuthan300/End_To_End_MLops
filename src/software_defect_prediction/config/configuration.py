@@ -1,6 +1,6 @@
 from software_defect_prediction.constants import *
 from software_defect_prediction.utils.common import read_yaml, create_directories
-from software_defect_prediction.entity.config_entity import (DataIngestionConfig, DataValidationConfig)
+from software_defect_prediction.entity.config_entity import (DataIngestionConfig, DataTransformationConfig, DataValidationConfig)
 
 from box import ConfigBox
 
@@ -47,3 +47,15 @@ class ConfigurationManager:
             STATUS_FILE = config.STATUS_FILE
         )
         return data_validation_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+        
+        create_directories([config.root_dir])
+        data_transformation_config = DataTransformationConfig(
+            root_dir = config.root_dir,
+            source_file_path = config.source_file_path,
+            input_file_name = config.input_file_name
+            
+        )
+        return data_transformation_config
