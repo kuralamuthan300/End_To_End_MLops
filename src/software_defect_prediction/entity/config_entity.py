@@ -1,3 +1,4 @@
+import array
 from dataclasses import dataclass
 from pathlib import Path
 from software_defect_prediction import logger
@@ -23,3 +24,10 @@ class DataTransformationConfig:
     root_dir: Path
     source_file_path : str
     input_file_name : str
+    
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir : Path
+    source_file_path : str
+    train_file : str
+    test_file : str

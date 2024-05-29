@@ -1,6 +1,7 @@
+from cgi import test
 from software_defect_prediction.constants import *
 from software_defect_prediction.utils.common import read_yaml, create_directories
-from software_defect_prediction.entity.config_entity import (DataIngestionConfig, DataTransformationConfig, DataValidationConfig)
+from software_defect_prediction.entity.config_entity import (DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelTrainerConfig)
 
 from box import ConfigBox
 
@@ -59,3 +60,16 @@ class ConfigurationManager:
             
         )
         return data_transformation_config
+    
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        
+        create_directories([config.root_dir])
+        model_trainer_config = ModelTrainerConfig(
+            root_dir = config.root_dir,
+            source_file_path = config.source_file_path,
+            train_file = config.train_file
+            test_file = config.test_file
+        )
+        
+        return(model_trainer_config)

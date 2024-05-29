@@ -19,3 +19,9 @@ data_transformation:
   root_dir: artifacts/data_transformation
   source_file_path: artifacts/data_validation/software_defect_detection.csv
   input_file_name: software_defect_detection.csv
+
+model_trainer:
+  root_dir: artifacts/model_trainer
+  source_file_path: artifacts/data_validation/
+  train_file : train.csv
+  test_file : test.csv
