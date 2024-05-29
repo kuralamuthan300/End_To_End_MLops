@@ -68,7 +68,7 @@ class ConfigurationManager:
         model_trainer_config = ModelTrainerConfig(
             root_dir = config.root_dir,
             source_file_path = config.source_file_path,
-            train_file = config.train_file
+            train_file = config.train_file,
             test_file = config.test_file
         )
         
