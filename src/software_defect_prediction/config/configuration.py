@@ -1,4 +1,6 @@
 from cgi import test
+
+from flask import Config
 from software_defect_prediction.constants import *
 from software_defect_prediction.utils.common import read_yaml, create_directories
 from software_defect_prediction.entity.config_entity import (DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelTrainerConfig)
@@ -20,6 +22,9 @@ class ConfigurationManager:
 
     def get_data_schema(self) -> ConfigBox:
         return(self.schema)
+
+    def get_model_params(self) -> ConfigBox:
+        return(self.params)
 
     def get_data_ingestion_config(self) -> DataIngestionConfig:
         config = self.config.data_ingestion
@@ -73,3 +78,5 @@ class ConfigurationManager:
         )
         
         return(model_trainer_config)
+    
+    

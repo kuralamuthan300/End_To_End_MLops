@@ -13,7 +13,5 @@ types-PyYAML
 Flask
 Flask-Cors
 loguru
-zipfile 
-tensorflow 
-keras-tuner
+zipfile
 -e .
