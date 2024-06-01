@@ -4,6 +4,7 @@ from software_defect_prediction.pipeline.stage_01_dataingestion_pipeline import 
 from software_defect_prediction.pipeline.stage_02_datavalidation_pipeline import DataValidationPipeline
 from software_defect_prediction.pipeline.stage_03_datatransformation_pipeline import DataTransformationPipeline
 from software_defect_prediction.pipeline.stage_04_modeltraining_pipeline import ModelTrainingPipeline
+from software_defect_prediction.pipeline.stage_05_modelevaluation_pipeline import ModelEvaluationPipeline
 
 dataingestion_pipeline = DataIngestionPipeline()
 dataingestion_pipeline.main()
@@ -16,3 +17,6 @@ datatransformation_pipeline.main()
 
 modeltraining_pipeline = ModelTrainingPipeline()
 modeltraining_pipeline.main()
+
+modelevaluation_pipeline = ModelEvaluationPipeline()
+modelevaluation_pipeline.main()
