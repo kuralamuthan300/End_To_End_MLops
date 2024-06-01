@@ -3,7 +3,7 @@ from cgi import test
 from flask import Config
 from software_defect_prediction.constants import *
 from software_defect_prediction.utils.common import read_yaml, create_directories
-from software_defect_prediction.entity.config_entity import (DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelTrainerConfig)
+from software_defect_prediction.entity.config_entity import (DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelEvaluationConfig, ModelTrainerConfig)
 
 from box import ConfigBox
 
@@ -12,11 +12,13 @@ class ConfigurationManager:
         self,
         config_filepath = CONFIG_FILE_PATH,
         params_filepath = PARAMS_FILE_PATH,
-        schema_filepath = SCHEMA_FILE_PATH):
-
+        schema_filepath = SCHEMA_FILE_PATH,
+        credentials_filepath = CREDENTIALS_FILE_PATH):
+        
         self.config = read_yaml(config_filepath)
         self.params = read_yaml(params_filepath)
         self.schema = read_yaml(schema_filepath)
+        self.__credentials = read_yaml(credentials_filepath)
 
         create_directories([self.config.artifacts_root])
 
@@ -25,6 +27,9 @@ class ConfigurationManager:
 
     def get_model_params(self) -> ConfigBox:
         return(self.params)
+
+    def get_mlflow_credentials(self) -> ConfigBox:
+        return(self.__credentials.mlflow)
 
     def get_data_ingestion_config(self) -> DataIngestionConfig:
         config = self.config.data_ingestion
@@ -78,5 +83,19 @@ class ConfigurationManager:
         )
         
         return(model_trainer_config)
-    
+
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+        
+        create_directories([config.root_dir])
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir = config.root_dir,
+            source_file_path = config.source_file_path,
+            model_file  = config.model_file,
+            train_file = config.train_file,
+            test_file  = config.test_file,
+            perf_metrics_file = config.perf_metrics_file
+        )
+        
+        return(model_evaluation_config)
     

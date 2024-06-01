@@ -25,3 +25,11 @@ model_trainer:
   source_file_path: artifacts/data_transformation/
   train_file : train_data.csv
   test_file : test_data.csv
+
+model_evaluation:
+  root_dir : artifacts/model_evaluation
+  source_file_path : artifacts/model_trainer/
+  model_file : random_forest_model.joblib
+  train_file : train_data.csv
+  test_file : test_data.csv
+  perf_metrics_file : perf_metrics.json

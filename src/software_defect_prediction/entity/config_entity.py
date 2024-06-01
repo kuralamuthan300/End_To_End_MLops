@@ -1,6 +1,8 @@
 import array
 from dataclasses import dataclass
 from pathlib import Path
+
+from sqlalchemy import true
 from software_defect_prediction import logger
 
 @dataclass(frozen=True)
@@ -31,3 +33,12 @@ class ModelTrainerConfig:
     source_file_path : str
     train_file : str
     test_file : str
+    
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir : Path
+    source_file_path : str
+    model_file : str
+    train_file : str
+    test_file : str
+    perf_metrics_file : str
