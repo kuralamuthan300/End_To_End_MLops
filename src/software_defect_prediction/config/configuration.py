@@ -3,7 +3,7 @@ from cgi import test
 from flask import Config
 from software_defect_prediction.constants import *
 from software_defect_prediction.utils.common import read_yaml, create_directories
-from software_defect_prediction.entity.config_entity import (DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelEvaluationConfig, ModelTrainerConfig)
+from software_defect_prediction.entity.config_entity import (DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelEvaluationConfig, ModelTrainerConfig, PredictionConfig)
 
 from box import ConfigBox
 
@@ -98,4 +98,14 @@ class ConfigurationManager:
         )
         
         return(model_evaluation_config)
+    
+    def get_prediction_config(self) -> PredictionConfig
+        config = self.config.prediction
+    
+        prediction_config = PredictionConfig(
+        scaler_obj_path = config.scaler_obj_path
+        model_obj_path = config.model_obj_path
+        )
+        
+        return(prediction_config)
     

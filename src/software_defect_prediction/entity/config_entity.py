@@ -42,3 +42,8 @@ class ModelEvaluationConfig:
     train_file : str
     test_file : str
     perf_metrics_file : str
+    
+@dataclass(frozen=True)
+class PredictionConfig:
+    scaler_obj_path : str
+    model_obj_path : str

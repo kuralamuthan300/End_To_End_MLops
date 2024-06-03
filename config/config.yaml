@@ -33,3 +33,7 @@ model_evaluation:
   train_file : train_data.csv
   test_file : test_data.csv
   perf_metrics_file : perf_metrics.json
+
+prediction:
+  scaler_obj_path : artifacts/data_transformation/robust_scaler.joblib
+  model_obj_path : artifacts/model_trainer/random_forest_model.joblib
