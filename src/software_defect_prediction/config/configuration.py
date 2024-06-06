@@ -99,11 +99,11 @@ class ConfigurationManager:
         
         return(model_evaluation_config)
     
-    def get_prediction_config(self) -> PredictionConfig
+    def get_prediction_config(self) -> PredictionConfig:
         config = self.config.prediction
     
         prediction_config = PredictionConfig(
-        scaler_obj_path = config.scaler_obj_path
+        scaler_obj_path = config.scaler_obj_path,
         model_obj_path = config.model_obj_path
         )
         

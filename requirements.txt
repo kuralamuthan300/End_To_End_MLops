@@ -15,4 +15,6 @@ Flask-Cors
 loguru
 zipfile
 dagshub
+fastapi
+uvicorn
 -e .
