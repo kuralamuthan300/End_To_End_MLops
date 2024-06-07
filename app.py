@@ -5,6 +5,7 @@ from software_defect_prediction.pipeline.prediction_pipeline import Prediction
 from software_defect_prediction.config.configuration import ConfigurationManager
 import pandas as pd
 from subprocess import run
+import uvicorn
 
 app = FastAPI(
     title="Software Defect Prediction API",
@@ -45,7 +46,7 @@ async def root():
     """
     return {"message": "Welcome to the Software Defect Prediction API!"}
 
-@app.post("/train/", response_model=str)
+@app.get("/train/", response_model=str)
 async def train():
     """
     Initiates the training process for the software defect prediction model.
@@ -118,3 +119,7 @@ async def predict(params: SoftwareDefectPredictionData):
         return y_pred.tolist() if hasattr(y_pred, 'tolist') else y_pred
     except Exception as e:
         return {"error": str(e)}  # Handle exceptions and return informative error message
+    
+    
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8080)

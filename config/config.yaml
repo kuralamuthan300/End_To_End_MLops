@@ -1,39 +1,46 @@
-artifacts_root: artifacts
+# This configuration file defines various paths and settings used by the software defect detection pipeline.
 
+artifacts_root: artifacts  # Root directory for storing all pipeline artifacts
 
 data_ingestion:
-  root_dir: artifacts/data_ingestion
-  source_URL: https://drive.usercontent.google.com/u/0/uc?id=1-16D_BjR9RGJJ-UySEqFKWSO7ElDmmVs&export=download
-  source_URL_file_name : software_defect_detection.zip
-  source_URL_unzip_file_name : train.csv
-  local_data_file: software_defect_detection.csv
-  unzip_dir: artifacts/data_ingestion
+  # Configuration for data ingestion step
+  root_dir: artifacts/data_ingestion  # Subdirectory for data ingestion artifacts
+  source_URL: https://drive.usercontent.google.com/u/0/uc?id=1-16D_BjR9RGJJ-UySEqFKWSO7ElDmmVs&export=download  # URL of the data source
+  source_URL_file_name: software_defect_detection.zip  # Filename in the source URL
+  source_URL_unzip_file_name: train.csv  # Filename after unzipping from the source URL
+  local_data_file: software_defect_detection.csv  # Local filename after downloading
+  unzip_dir: artifacts/data_ingestion  # Subdirectory for storing unzipped data
 
 data_validation:
-  root_dir: artifacts/data_validation
-  source_file_path: artifacts/data_ingestion/software_defect_detection.csv
-  input_file_name: software_defect_detection.csv
-  STATUS_FILE : artifacts/data_validation/status.txt
+  # Configuration for data validation step
+  root_dir: artifacts/data_validation  # Subdirectory for data validation artifacts
+  source_file_path: artifacts/data_ingestion/software_defect_detection.csv  # Path to the downloaded data
+  input_file_name: software_defect_detection.csv  # Filename of the downloaded data
+  STATUS_FILE: artifacts/data_validation/status.txt  # File to store validation status
 
 data_transformation:
-  root_dir: artifacts/data_transformation
-  source_file_path: artifacts/data_validation/software_defect_detection.csv
-  input_file_name: software_defect_detection.csv
+  # Configuration for data transformation step
+  root_dir: artifacts/data_transformation  # Subdirectory for data transformation artifacts
+  source_file_path: artifacts/data_validation/software_defect_detection.csv  # Path to the validated data
+  input_file_name: software_defect_detection.csv  # Filename of the validated data
 
 model_trainer:
-  root_dir: artifacts/model_trainer
-  source_file_path: artifacts/data_transformation/
-  train_file : train_data.csv
-  test_file : test_data.csv
+  # Configuration for model training step
+  root_dir: artifacts/model_trainer  # Subdirectory for model training artifacts
+  source_file_path: artifacts/data_transformation/  # Path to the transformed data
+  train_file: train_data.csv  # Filename for the training data
+  test_file: test_data.csv  # Filename for the test data
 
 model_evaluation:
-  root_dir : artifacts/model_evaluation
-  source_file_path : artifacts/model_trainer/
-  model_file : random_forest_model.joblib
-  train_file : train_data.csv
-  test_file : test_data.csv
-  perf_metrics_file : perf_metrics.json
+  # Configuration for model evaluation step
+  root_dir: artifacts/model_evaluation  # Subdirectory for model evaluation artifacts
+  source_file_path: artifacts/model_trainer/  # Path to the trained model directory
+  model_file: random_forest_model.joblib  # Filename of the trained model
+  train_file: train_data.csv  # Filename of the training data
+  test_file: test_data.csv  # Filename of the test data
+  perf_metrics_file: perf_metrics.json  # Filename to store performance metrics
 
 prediction:
-  scaler_obj_path : artifacts/data_transformation/robust_scaler.joblib
-  model_obj_path : artifacts/model_trainer/random_forest_model.joblib
+  # Configuration for prediction step
+  scaler_obj_path: artifacts/data_transformation/robust_scaler.joblib  # Path to the scaling object
+  model_obj_path: artifacts/model_trainer/random_forest_model.joblib  # Path to the trained model

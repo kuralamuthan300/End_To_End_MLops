@@ -13,7 +13,7 @@ types-PyYAML
 Flask
 Flask-Cors
 loguru
-zipfile
+zipfile36
 dagshub
 fastapi
 uvicorn
